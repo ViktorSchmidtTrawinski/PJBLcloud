@@ -109,6 +109,16 @@ export default function Register() {
                   />
                 </div>
                 <div className="space-y-2">
+                  <Label htmlFor="email">E-mail</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="seu@email.com"
+                    error={errors.email?.message}
+                    {...register("email")}
+                  />
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="cpf">CPF</Label>
                   <Input
                     id="cpf"

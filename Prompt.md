@@ -6,6 +6,7 @@ Utilize um estilo simples, mas com padronização de cores, layout e principalme
 
 O CRUD de cadastro deve incluir:
 - Nome completo
+- Email
 - CPF
 - Data de nascimento
 - Endereço completo (rua, número, complemento (opcional), CEP, cidade, bairro)

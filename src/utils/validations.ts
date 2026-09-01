@@ -12,6 +12,7 @@ export const loginSchema = z.object({
 
 export const registerSchema = z.object({
   fullName: z.string().min(3, "O nome deve ter pelo menos 3 caracteres"),
+  email: z.string().email("E-mail inválido"),
   cpf: z
     .string()
     .regex(cpfRegex, "CPF inválido. Use o formato XXX.XXX.XXX-XX"),
