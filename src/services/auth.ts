@@ -12,8 +12,32 @@ interface AuthResponse {
 }
 
 export const authService = {
-  async register(data: RegisterData): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>("/usuarios", data);
+  async register(data: any): Promise<AuthResponse> {
+    // Mapeia o payload em inglês para os nomes em português esperados pela Azure Function
+    const payload = {
+      nomeCompleto: data.fullName || data.nomeCompleto || data.name,
+      email: data.email,
+      cpf: data.cpf,
+      dataNascimento: data.birthDate || data.dataNascimento,
+      celular: data.cellphone || data.celular,
+      senha: data.password || data.senha,
+      endereco: {
+        cep: data.cep,
+        rua: data.street || data.rua,
+        numero: data.number || data.numero,
+        complemento: data.complement || data.complemento,
+        bairro: data.neighborhood || data.bairro,
+        cidade: data.city || data.cidade,
+      },
+      cep: data.cep,
+      rua: data.street || data.rua,
+      numero: data.number || data.numero,
+      complemento: data.complement || data.complemento,
+      bairro: data.neighborhood || data.bairro,
+      cidade: data.city || data.cidade,
+    };
+
+    const response = await api.post<AuthResponse>("/usuarios", payload);
     return response.data;
   },
 
